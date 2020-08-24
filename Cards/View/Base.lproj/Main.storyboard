@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Mb-wg-CeK">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Cards-->
+        <scene sceneID="YcB-u1-ZMg">
+            <objects>
+                <tableViewController id="FyI-bF-S9F" customClass="ClassSelectionViewController" customModule="Cards" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ElU-ve-IRs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="LightColour"/>
+                        <color key="separatorColor" name="DarkColour"/>
+                        <color key="sectionIndexColor" name="DarkColour"/>
+                        <color key="sectionIndexBackgroundColor" name="LightColour"/>
+                        <color key="sectionIndexTrackingBackgroundColor" name="LightColour"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="5Yi-VP-U00">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="barTintColor" name="LightColour"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="FyI-bF-S9F" id="82g-5e-Sd0"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="classCell" id="leP-zj-3f6">
+                                <rect key="frame" x="0.0" y="72" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="leP-zj-3f6" id="mTL-nz-dA7">
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" name="LightColour"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FyI-bF-S9F" id="8ps-Ib-KUG"/>
+                            <outlet property="delegate" destination="FyI-bF-S9F" id="Dh4-2Q-JPh"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Cards" id="iou-a7-Kqv">
+                        <barButtonItem key="rightBarButtonItem" title="AddClass" image="plus" catalog="system" id="Yd0-fD-83M">
+                            <color key="tintColor" name="DarkColour"/>
+                            <connections>
+                                <action selector="addClass:" destination="FyI-bF-S9F" id="vqQ-Vd-6lA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="blh-08-YF5" kind="show" identifier="classInfoSegue" id="CgT-7e-TgT"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zht-HG-xXY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1471.0144927536232" y="123.88392857142857"/>
+        </scene>
+        <!--Class Info Controller-->
+        <scene sceneID="k4O-3K-eqs">
+            <objects>
+                <viewController id="blh-08-YF5" customClass="ClassInfoController" customModule="Cards" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L1t-h6-Nff">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="89" translatesAutoresizingMaskIntoConstraints="NO" id="Oos-IU-SE3">
+                                <rect key="frame" x="20" y="204.5" width="167.5" height="487"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3mw-f0-Mdv">
+                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="162"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfj-tB-6Fr">
+                                                <rect key="frame" x="0.0" y="0.0" width="161.5" height="76"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="65"/>
+                                                <color key="textColor" name="DarkColour"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Cards:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GfM-5q-epJ">
+                                                <rect key="frame" x="0.0" y="86" width="167.5" height="76"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="21"/>
+                                                <color key="textColor" name="DarkColour"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="9P1-xn-enM">
+                                        <rect key="frame" x="0.0" y="251" width="167.5" height="236"/>
+                                        <subviews>
+                                            <button opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUD-Ml-6DX">
+                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="56"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="37"/>
+                                                <color key="tintColor" name="LightColour"/>
+                                                <state key="normal" title="Present">
+                                                    <color key="titleColor" name="DarkColour"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="presentButton:" destination="blh-08-YF5" eventType="touchUpInside" id="0no-Mf-ygG"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMT-wx-Za5">
+                                                <rect key="frame" x="0.0" y="90" width="167.5" height="56"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="37"/>
+                                                <state key="normal" title="Edit">
+                                                    <color key="titleColor" name="DarkColour"/>
+                                                    <color key="titleShadowColor" name="Beige"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="editButton:" destination="blh-08-YF5" eventType="touchUpInside" id="VJq-u5-pUS"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oor-tX-6OX">
+                                                <rect key="frame" x="0.0" y="180" width="167.5" height="56"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="37"/>
+                                                <color key="tintColor" name="Beige"/>
+                                                <state key="normal" title="Delete">
+                                                    <color key="titleColor" name="Red"/>
+                                                    <color key="titleShadowColor" name="Beige"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="deleteButton:" destination="blh-08-YF5" eventType="touchUpInside" id="fGy-2A-D6f"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" name="LightColour"/>
+                        <constraints>
+                            <constraint firstItem="Oos-IU-SE3" firstAttribute="leading" secondItem="vKb-0n-5U8" secondAttribute="leading" constant="20" id="Itt-36-cCO"/>
+                            <constraint firstItem="Oos-IU-SE3" firstAttribute="centerY" secondItem="L1t-h6-Nff" secondAttribute="centerY" id="apY-em-Hno"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vKb-0n-5U8"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="WEH-EQ-9ed"/>
+                    <connections>
+                        <outlet property="CardAmountLabel" destination="GfM-5q-epJ" id="VZd-Ax-Kuu"/>
+                        <outlet property="TitleLabel" destination="Lfj-tB-6Fr" id="edY-TP-aSE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o7d-gi-uav" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2334.7826086956525" y="123.88392857142857"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Rbn-nx-HiH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Mb-wg-CeK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DDs-d8-vnG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="Beige"/>
+                        <color key="barTintColor" name="Blue"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="DarkColour"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" name="DarkColour"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FyI-bF-S9F" kind="relationship" relationship="rootViewController" id="iJQ-VB-veA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="reM-c2-jKc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="560.86956521739137" y="123.88392857142857"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <namedColor name="Beige">
+            <color red="0.92941176470588238" green="0.72156862745098038" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Blue">
+            <color red="0.35686274509803922" green="0.76470588235294112" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkColour">
+            <color red="0.18000000715255737" green="0.15700000524520874" blue="0.16500000655651093" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightColour">
+            <color red="0.98000001907348633" green="0.84700000286102295" blue="0.83899998664855957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Red">
+            <color red="0.93725490196078431" green="0.24313725490196078" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
