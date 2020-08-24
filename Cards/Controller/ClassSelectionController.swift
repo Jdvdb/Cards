@@ -22,6 +22,10 @@ class ClassSelectionViewController: UITableViewController {
         loadClasses()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadClasses()
+    }
+    
     // MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return classes.count
@@ -47,7 +51,18 @@ class ClassSelectionViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! ClassInfoController
         if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedClassName = classes[indexPath.row].name!
+            destinationVC.selectedClass = classes[indexPath.row]
+        }
+    }
+    
+    // next 2 functions handle swipeable cells
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            deleteClass(deleteItemAt: indexPath.row)
         }
     }
     
@@ -72,6 +87,17 @@ class ClassSelectionViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    // remove a class from a certain index
+    func deleteClass(deleteItemAt index: Int) {
+        context.delete(classes[index])
+        classes.remove(at: index)
+        
+        // you need to save the changes made to the context so that the item is deleted
+        saveClasses()
+        
+        tableView.reloadData()
+    }
+    
 
     
     // MARK: - Add Class
@@ -88,12 +114,17 @@ class ClassSelectionViewController: UITableViewController {
             self.saveClasses()
         }
         
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            print("cancel")
+        }
+        
         alert.addTextField { (alertTextField) in
             textField = alertTextField
             alertTextField.placeholder = "Create New Class"
             
         }
         
+        alert.addAction(cancel)
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)

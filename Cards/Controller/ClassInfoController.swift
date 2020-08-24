@@ -11,15 +11,14 @@ import CoreData
 
 class ClassInfoController: UIViewController {
     
-    var selectedClassName : String?
+    var selectedClass : Class?
     
     // the context needed for persistent data
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("loading class info")
-        TitleLabel.text = selectedClassName ?? "Class"
+        TitleLabel.text = selectedClass?.name ?? "Class"
         CardAmountLabel.text = "Number of classes: \(String(loadNumberOfCards()))"
     }
     
@@ -34,13 +33,28 @@ class ClassInfoController: UIViewController {
     }
     
     @IBAction func deleteButton(_ sender: Any) {
-        print("Delete Class")
+        let alert = UIAlertController(title: "Delete Class", message: "You will lose all cards in this class too", preferredStyle: .alert)
+        
+        let delete = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            print("delete")
+            self.deleteClass()
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            print("cancel")
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(delete)
+        
+        present(alert, animated: true, completion: nil)
     }
     
+    // MARK: - Data Manipulation Methods
     func loadNumberOfCards() -> Int {
         let request : NSFetchRequest<Card> = Card.fetchRequest()
-        if (selectedClassName != nil) {
-            request.predicate = NSPredicate(format: "parentClass.name MATCHES %@", selectedClassName!)
+        if (selectedClass != nil) {
+            request.predicate = NSPredicate(format: "parentClass.name MATCHES %@", selectedClass!.name!)
             do {
                 let cards = try context.fetch(request);
                 return cards.count
@@ -51,6 +65,24 @@ class ClassInfoController: UIViewController {
         } else {
             return 0;
         }
+    }
+    
+    // delete the current class and then go back to class selection screen
+    func deleteClass() {
+        if (selectedClass != nil) {
+            context.delete(selectedClass!)
+            do {
+                try context.save()
+            } catch {
+                print("Error saving class: \(error)")
+            }
+        }
+        
+        // you need to save the changes made to the context so that the item is deleted
+//        saveClasses()
+        
+        // navigate home
+        _ = navigationController?.popViewController(animated: true)
     }
     
 }
