@@ -19,7 +19,7 @@ class ClassInfoController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         TitleLabel.text = selectedClass?.name ?? "Class"
-        CardAmountLabel.text = "Number of classes: \(String(loadNumberOfCards()))"
+        CardAmountLabel.text = "Number of cards: \(String(loadNumberOfCards()))"
     }
     
     @IBOutlet weak var TitleLabel: UILabel!
@@ -30,6 +30,8 @@ class ClassInfoController: UIViewController {
     }
     @IBAction func editButton(_ sender: UIButton) {
         print("Edit Cards")
+        
+        performSegue(withIdentifier: K.classEditSegue, sender: self)
     }
     
     @IBAction func deleteButton(_ sender: Any) {
@@ -78,11 +80,15 @@ class ClassInfoController: UIViewController {
             }
         }
         
-        // you need to save the changes made to the context so that the item is deleted
-//        saveClasses()
-        
         // navigate home
         _ = navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ViewCardsController
+        destinationVC.selectedClass = selectedClass!
+        
     }
     
 }

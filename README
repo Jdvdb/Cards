@@ -1,0 +1,7 @@
+Cards ToDo:
+
+- Create screen to view a card
+
+- Create screen to edit a card (and add segue to it from selecting card)
+
+- Create segue from class info to view cards (and start cycling through all cards)
