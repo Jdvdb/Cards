@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Mb-wg-CeK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Mb-wg-CeK">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -33,7 +34,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="barTintColor" name="LightColour"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             <connections>
                                 <outlet property="delegate" destination="FyI-bF-S9F" id="82g-5e-Sd0"/>
                             </connections>
@@ -65,6 +66,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="5Yi-VP-U00" id="Ppz-YA-4jc"/>
                         <segue destination="blh-08-YF5" kind="show" identifier="goToClassInfo" id="CgT-7e-TgT"/>
                     </connections>
                 </tableViewController>
@@ -76,89 +78,219 @@
         <scene sceneID="k4O-3K-eqs">
             <objects>
                 <viewController id="blh-08-YF5" customClass="ClassInfoController" customModule="Cards" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="L1t-h6-Nff">
+                    <view key="view" contentMode="scaleAspectFit" id="L1t-h6-Nff">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="89" translatesAutoresizingMaskIntoConstraints="NO" id="Oos-IU-SE3">
-                                <rect key="frame" x="20" y="204.5" width="167.5" height="487"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="9P1-xn-enM">
+                                <rect key="frame" x="126.5" y="316" width="161.5" height="264.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3mw-f0-Mdv">
-                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="162"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfj-tB-6Fr">
-                                                <rect key="frame" x="0.0" y="0.0" width="161.5" height="76"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="65"/>
-                                                <color key="textColor" name="DarkColour"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Cards:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GfM-5q-epJ">
-                                                <rect key="frame" x="0.0" y="86" width="167.5" height="76"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="21"/>
-                                                <color key="textColor" name="DarkColour"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="9P1-xn-enM">
-                                        <rect key="frame" x="0.0" y="251" width="167.5" height="236"/>
-                                        <subviews>
-                                            <button opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUD-Ml-6DX">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="56"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="37"/>
-                                                <color key="tintColor" name="LightColour"/>
-                                                <state key="normal" title="Present">
-                                                    <color key="titleColor" name="DarkColour"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="presentButton:" destination="blh-08-YF5" eventType="touchUpInside" id="0no-Mf-ygG"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMT-wx-Za5">
-                                                <rect key="frame" x="0.0" y="90" width="167.5" height="56"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="37"/>
-                                                <state key="normal" title="Edit">
-                                                    <color key="titleColor" name="DarkColour"/>
-                                                    <color key="titleShadowColor" name="Beige"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="editButton:" destination="blh-08-YF5" eventType="touchUpInside" id="VJq-u5-pUS"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oor-tX-6OX">
-                                                <rect key="frame" x="0.0" y="180" width="167.5" height="56"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="37"/>
-                                                <color key="tintColor" name="Beige"/>
-                                                <state key="normal" title="Delete">
-                                                    <color key="titleColor" name="Red"/>
-                                                    <color key="titleShadowColor" name="Beige"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="deleteButton:" destination="blh-08-YF5" eventType="touchUpInside" id="fGy-2A-D6f"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Class" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfj-tB-6Fr">
+                                        <rect key="frame" x="0.0" y="0.0" width="161.5" height="76"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="65"/>
+                                        <color key="textColor" name="DarkColour"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Cards:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GfM-5q-epJ">
+                                        <rect key="frame" x="0.0" y="76" width="161.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                        <color key="textColor" name="DarkColour"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUD-Ml-6DX">
+                                        <rect key="frame" x="0.0" y="96.5" width="161.5" height="56"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="37"/>
+                                        <color key="tintColor" name="LightColour"/>
+                                        <state key="normal" title="Present">
+                                            <color key="titleColor" name="DarkColour"/>
+                                            <color key="titleShadowColor" name="Beige"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="presentButton:" destination="blh-08-YF5" eventType="touchUpInside" id="0no-Mf-ygG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMT-wx-Za5">
+                                        <rect key="frame" x="0.0" y="152.5" width="161.5" height="56"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="37"/>
+                                        <state key="normal" title="Edit">
+                                            <color key="titleColor" name="DarkColour"/>
+                                            <color key="titleShadowColor" name="Beige"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="editButton:" destination="blh-08-YF5" eventType="touchUpInside" id="VJq-u5-pUS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oor-tX-6OX">
+                                        <rect key="frame" x="0.0" y="208.5" width="161.5" height="56"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="37"/>
+                                        <color key="tintColor" name="Beige"/>
+                                        <state key="normal" title="Delete">
+                                            <color key="titleColor" name="Red"/>
+                                            <color key="titleShadowColor" name="Beige"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteButton:" destination="blh-08-YF5" eventType="touchUpInside" id="fGy-2A-D6f"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="vKb-0n-5U8"/>
                         <color key="backgroundColor" name="LightColour"/>
                         <constraints>
-                            <constraint firstItem="Oos-IU-SE3" firstAttribute="leading" secondItem="vKb-0n-5U8" secondAttribute="leading" constant="20" id="Itt-36-cCO"/>
-                            <constraint firstItem="Oos-IU-SE3" firstAttribute="centerY" secondItem="L1t-h6-Nff" secondAttribute="centerY" id="apY-em-Hno"/>
+                            <constraint firstItem="9P1-xn-enM" firstAttribute="centerY" secondItem="L1t-h6-Nff" secondAttribute="centerY" id="gmG-xA-tb5"/>
+                            <constraint firstItem="9P1-xn-enM" firstAttribute="centerX" secondItem="L1t-h6-Nff" secondAttribute="centerX" id="q48-fj-bVK"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="vKb-0n-5U8"/>
                     </view>
                     <navigationItem key="navigationItem" id="WEH-EQ-9ed"/>
                     <connections>
                         <outlet property="CardAmountLabel" destination="GfM-5q-epJ" id="VZd-Ax-Kuu"/>
                         <outlet property="TitleLabel" destination="Lfj-tB-6Fr" id="edY-TP-aSE"/>
                         <segue destination="82w-qh-FNN" kind="show" identifier="goToEditClass" id="qtM-mz-6zU"/>
+                        <segue destination="xek-7q-8as" kind="show" identifier="gotoPresent" id="FPc-4G-tPJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o7d-gi-uav" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2334.7826086956525" y="123.88392857142857"/>
+        </scene>
+        <!--Create Card Controller-->
+        <scene sceneID="QYb-II-lda">
+            <objects>
+                <viewController id="kbe-YP-sZH" customClass="CreateCardController" customModule="Cards" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HMC-QY-Ipe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kgc-zX-GGe">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fuy-Bc-IHr">
+                                        <rect key="frame" x="76.5" y="0.0" width="261.5" height="77"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="65"/>
+                                        <color key="textColor" name="DarkColour"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9VU-Ch-bxJ">
+                                        <rect key="frame" x="0.0" y="77" width="414" height="260"/>
+                                        <color key="backgroundColor" name="Beige"/>
+                                        <color key="textColor" name="DarkColour"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yO-0M-uRz">
+                                        <rect key="frame" x="98.5" y="337" width="217" height="77"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="65"/>
+                                        <color key="textColor" name="DarkColour"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="A0a-39-Ndv">
+                                        <rect key="frame" x="0.0" y="414" width="414" height="300.5"/>
+                                        <color key="backgroundColor" name="Beige"/>
+                                        <color key="textColor" name="DarkColour"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HW-Fs-SDT">
+                                        <rect key="frame" x="162.5" y="714.5" width="89" height="59.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="40"/>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="saveButton:" destination="kbe-YP-sZH" eventType="touchUpInside" id="dMy-zJ-uGk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="9VU-Ch-bxJ" firstAttribute="leading" secondItem="kgc-zX-GGe" secondAttribute="leading" id="7o4-E1-W4P"/>
+                                    <constraint firstItem="9VU-Ch-bxJ" firstAttribute="top" secondItem="Fuy-Bc-IHr" secondAttribute="bottom" id="FhO-21-ja5"/>
+                                    <constraint firstItem="7HW-Fs-SDT" firstAttribute="top" secondItem="A0a-39-Ndv" secondAttribute="bottom" id="UA4-SU-blH"/>
+                                    <constraint firstItem="3yO-0M-uRz" firstAttribute="top" secondItem="9VU-Ch-bxJ" secondAttribute="bottom" id="Ueh-Jg-AXC"/>
+                                    <constraint firstItem="A0a-39-Ndv" firstAttribute="top" secondItem="3yO-0M-uRz" secondAttribute="bottom" id="nZ7-le-Gbi"/>
+                                    <constraint firstAttribute="trailing" secondItem="A0a-39-Ndv" secondAttribute="trailing" id="oxb-yk-ZEc"/>
+                                    <constraint firstAttribute="trailing" secondItem="9VU-Ch-bxJ" secondAttribute="trailing" id="vRr-wv-cqg"/>
+                                    <constraint firstItem="A0a-39-Ndv" firstAttribute="leading" secondItem="kgc-zX-GGe" secondAttribute="leading" id="y3d-J5-UBP"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="33B-uJ-cEN"/>
+                        <color key="backgroundColor" name="LightColour"/>
+                        <constraints>
+                            <constraint firstItem="kgc-zX-GGe" firstAttribute="top" secondItem="33B-uJ-cEN" secondAttribute="top" id="7se-ol-fV9"/>
+                            <constraint firstItem="33B-uJ-cEN" firstAttribute="bottom" secondItem="kgc-zX-GGe" secondAttribute="bottom" id="jpa-JE-B6R"/>
+                            <constraint firstItem="kgc-zX-GGe" firstAttribute="leading" secondItem="33B-uJ-cEN" secondAttribute="leading" id="mcr-wH-hKK"/>
+                            <constraint firstItem="kgc-zX-GGe" firstAttribute="trailing" secondItem="33B-uJ-cEN" secondAttribute="trailing" id="vcy-VT-uCH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="fkM-jk-BjZ"/>
+                    <connections>
+                        <outlet property="answerText" destination="A0a-39-Ndv" id="EJP-OG-dtP"/>
+                        <outlet property="questionText" destination="9VU-Ch-bxJ" id="5cI-Eb-1cS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lkD-Eh-Ffw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4182.608695652174" y="436.60714285714283"/>
+        </scene>
+        <!--Present Card Controller-->
+        <scene sceneID="O6e-Zr-cfF">
+            <objects>
+                <viewController id="xek-7q-8as" customClass="PresentCardController" customModule="Cards" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RHY-QG-gMW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="XGX-X4-idN">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzr-9z-jdC">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="713.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="50"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcb-D2-Iq1">
+                                        <rect key="frame" x="0.0" y="753.5" width="414" height="20.5"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Tap Screen for Answer">
+                                                <attributes>
+                                                    <font key="NSFont" metaFont="system" size="17"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bPI-fx-VXp"/>
+                        <color key="backgroundColor" name="LightColour"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="bPI-fx-VXp" firstAttribute="bottom" secondItem="XGX-X4-idN" secondAttribute="bottom" id="67p-gD-iVy"/>
+                            <constraint firstItem="XGX-X4-idN" firstAttribute="leading" secondItem="bPI-fx-VXp" secondAttribute="leading" id="Qnn-51-rEg"/>
+                            <constraint firstItem="XGX-X4-idN" firstAttribute="top" secondItem="bPI-fx-VXp" secondAttribute="top" id="ShM-uT-ae6"/>
+                            <constraint firstItem="XGX-X4-idN" firstAttribute="centerX" secondItem="RHY-QG-gMW" secondAttribute="centerX" id="fJ8-kQ-fJk"/>
+                            <constraint firstItem="bPI-fx-VXp" firstAttribute="trailing" secondItem="XGX-X4-idN" secondAttribute="trailing" id="p6A-bC-xqT"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Ami-zV-kno" appends="YES" id="29n-hy-G0A"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="YrN-AY-Xpq"/>
+                    <connections>
+                        <outlet property="instructionLabel" destination="Dcb-D2-Iq1" id="wYB-SS-yRh"/>
+                        <outlet property="messageLabel" destination="Tzr-9z-jdC" id="CRL-DG-fhf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QFj-ZJ-EXf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ami-zV-kno">
+                    <connections>
+                        <action selector="tapGesture:" destination="xek-7q-8as" id="lZU-96-keU"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3318.840579710145" y="-279.24107142857139"/>
         </scene>
         <!--View Cards Controller-->
         <scene sceneID="08J-t5-hWw">
@@ -177,7 +309,10 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="barTintColor" name="LightColour"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            <connections>
+                                <outlet property="delegate" destination="82w-qh-FNN" id="BN3-fN-Ptl"/>
+                            </connections>
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cardCell" id="IlG-WR-sZ8">
@@ -205,10 +340,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="BkU-7y-JXV" id="jCQ-eO-p8F"/>
+                        <segue destination="kbe-YP-sZH" kind="show" identifier="gotoCreateCard" id="gOS-jQ-jaV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2et-NA-s2X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3171" y="-108"/>
+            <point key="canvasLocation" x="3319" y="437"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rbn-nx-HiH">

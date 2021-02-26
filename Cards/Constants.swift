@@ -16,4 +16,6 @@ struct K {
     static let classInfoSegue = "goToClassInfo"
     static let classEditSegue = "goToEditClass"
     static let cardEditSegue = "goToEditCard"
+    static let cardCretionSegue = "gotoCreateCard"
+    static let cardPresentationSegue = "gotoPresent"
 }

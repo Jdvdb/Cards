@@ -16,15 +16,19 @@ class ClassSelectionViewController: UITableViewController {
     // the context needed for persistent data
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     // load all of the classes in when the view loads
     override func viewDidLoad() {
         super.viewDidLoad()
         loadClasses()
+        searchBar.text = ""
     }
     
     // reload classes whenvever returning to this screen
     override func viewWillAppear(_ animated: Bool) {
         loadClasses()
+        searchBar.text = ""
     }
     
     // MARK: - TableView Datasource Methods
@@ -106,12 +110,30 @@ class ClassSelectionViewController: UITableViewController {
         let alert = UIAlertController(title: "Add New Class", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add Class", style: .default) { (action) in
-            let newClass = Class(context: self.context)
-            newClass.name = textField.text
-            
-            self.classes.append(newClass)
-            
-            self.saveClasses()
+            // check if a class exists with this name
+            var existsFlag = false
+            for item in self.classes {
+                if item.name == textField.text {
+                    existsFlag = true
+                }
+            }
+            if existsFlag {
+                print("class already exists!")
+                let alert = UIAlertController(title: "Error: Class Already Exists", message: "Make sure all of your classes have unique names!", preferredStyle: .alert)
+                
+                let dismiss = UIAlertAction(title: "Dismiss", style: .default) { (action) in
+                    print("dismiss")
+                }
+                alert.addAction(dismiss)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                let newClass = Class(context: self.context)
+                newClass.name = textField.text
+                
+                self.classes.append(newClass)
+                
+                self.saveClasses()
+            }
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in

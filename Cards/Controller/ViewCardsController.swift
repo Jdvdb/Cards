@@ -17,7 +17,9 @@ class ViewCardsController: UITableViewController {
     var cards = [Card]()
     // the context needed for persistent data
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadCards()
@@ -42,7 +44,7 @@ class ViewCardsController: UITableViewController {
     
     // MARK: - Tableview Delegate Method
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: K.classInfoSegue, sender: self)
+        performSegue(withIdentifier: K.cardCretionSegue, sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -60,7 +62,7 @@ class ViewCardsController: UITableViewController {
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! EditCardController
+        let destinationVC = segue.destination as! CreateCardController
         if let indexPath = tableView.indexPathForSelectedRow {
             destinationVC.selectedCard = cards[indexPath.row]
         }
@@ -79,7 +81,6 @@ class ViewCardsController: UITableViewController {
     // will load items based on request, or all items if not specified
     func loadCards(with request: NSFetchRequest<Card> = Card.fetchRequest(), predicate: NSPredicate? = nil) {
         let classPredicate = NSPredicate(format: "parentClass.name MATCHES %@", selectedClass!.name!)
-        
         // add additional predicates if user provided one
         if let additionalPredicate = predicate {
             request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [additionalPredicate, classPredicate])
@@ -111,13 +112,14 @@ class ViewCardsController: UITableViewController {
     
     // MARK: - Add Card
     @IBAction func addCard(_ sender: UIBarButtonItem) {
+        print("add item")
         var textField = UITextField()
         let alert = UIAlertController(title: "Add New Card", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add Card", style: .default) { (action) in
             let newCard = Card(context: self.context)
             newCard.question = textField.text
-            newCard.answer = "yes."
+            newCard.answer = ""
             newCard.parentClass = self.selectedClass
             
             self.cards.append(newCard)
@@ -140,7 +142,27 @@ class ViewCardsController: UITableViewController {
         
         present(alert, animated: true, completion: nil)
     }
-    
-    
+}
 
+// MARK: - Search Bar Functionality
+extension ViewCardsController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // query the database for classes that contain string in search bar
+        let request: NSFetchRequest<Card> = Card.fetchRequest()
+        let predicate: NSPredicate = NSPredicate(format: "question CONTAINS[cd] %@", searchBar.text!)
+                
+        loadCards(with: request, predicate: predicate)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // load all items when searchbar is blank
+        if searchBar.text!.count == 0 {
+            loadCards()
+            
+            // this will make sure the search is dismissed
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
 }

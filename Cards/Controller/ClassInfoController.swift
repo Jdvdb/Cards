@@ -16,17 +16,26 @@ class ClassInfoController: UIViewController {
     // the context needed for persistent data
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    @IBOutlet weak var TitleLabel: UILabel!
+    @IBOutlet weak var CardAmountLabel: UILabel!
+    
+    // TODO - Make function for loading screen
     override func viewDidLoad() {
         super.viewDidLoad()
         TitleLabel.text = selectedClass?.name ?? "Class"
         CardAmountLabel.text = "Number of cards: \(String(loadNumberOfCards()))"
     }
     
-    @IBOutlet weak var TitleLabel: UILabel!
-    @IBOutlet weak var CardAmountLabel: UILabel!
+    // reload classes whenvever returning to this screen
+    override func viewWillAppear(_ animated: Bool) {
+        TitleLabel.text = selectedClass?.name ?? "Class"
+        CardAmountLabel.text = "Number of cards: \(String(loadNumberOfCards()))"
+    }
     
     @IBAction func presentButton(_ sender: UIButton) {
         print("Presenting Cards")
+        
+        performSegue(withIdentifier: K.cardPresentationSegue, sender: self)
     }
     @IBAction func editButton(_ sender: UIButton) {
         print("Edit Cards")
@@ -86,8 +95,15 @@ class ClassInfoController: UIViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! ViewCardsController
-        destinationVC.selectedClass = selectedClass!
+        if let destinationVC = segue.destination as? PresentCardController {
+            destinationVC.selectedClass = selectedClass!
+            destinationVC.order = true
+        }
+        else if let destinationVC = segue.destination as? ViewCardsController {
+            destinationVC.selectedClass = selectedClass!
+        }
+        
+//        destinationVC.selectedClass = selectedClass!
         
     }
     
