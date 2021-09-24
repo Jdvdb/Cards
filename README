@@ -1,24 +1,11 @@
-Cards ToDo:
+# Cards
 
-- Ensure you can only have one class with each name //done
+A simple way to create cue cards on your iOS devices.
 
-- Check if more steps need to be done when deleting a class to handle cards // done
+Note that this app is a very rough PoC designed out of curiosity. There are still bugs within it along with some poor UX/UI formatting.
 
-- Create screen to view a card // done
+## Features
 
-- Create screen to edit a card (and add segue to it from selecting card) // done
-
-- Implement Search Bar for cards // done
-
-- Create segue from class info to view cards (i.e. figure out how to handle multiple segues
-
-- Add connections from screen to controller
-
-- Set up gesture controls
-
-- Implement code for card selection
-
-- Create alert when presenting for order and random
-
-- Add segue for after finished reading through cards
-
+* Create folders for different classes that you have.
+* Create study sets of notes within these classes.
+* Within each set of notes, create cue cards that you can read from and review.
